@@ -79,6 +79,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+
+        $this->authorize('author', $post);/* esto es para que o se editen post de otros usuarios ya sea porque pongo el id en la url. esto se obtiene a traves de un policy sacado del video de como crear un blog autoadministrable de victor arana flores video 18 en policies */
+
         $categories= Category::pluck('name', 'id');
         $tags= Tag::all();
 
@@ -95,6 +98,8 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     { 
+        $this->authorize('author', $post);/* esto es para que o se editen post de otros usuarios ya sea porque pongo el id en la url. esto se obtiene a traves de un policy sacado del video de como crear un blog autoadministrable de victor arana flores video 18 en policies */
+
         $post->update($request->all());
 
         if ($request->file('file')) {
@@ -112,6 +117,10 @@ class PostController extends Controller
                 ]);
             }
         }
+
+        if ($request->tags) {
+            $post->tags()->sync($request->tags); /* eno se usa el metodo attach ya que siempre se creara uno mas, con sync el verifica si ya existe y lo actualiza */
+        }
         return redirect()->route('admin.posts.edit', $post)->with('info', 'El post se actualizo con exito');
     }
 
@@ -123,6 +132,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $this->authorize('author', $post);/* esto es para que o se editen post de otros usuarios ya sea porque pongo el id en la url. esto se obtiene a traves de un policy sacado del video de como crear un blog autoadministrable de victor arana flores video 18 en policies */
+
+        $post->delete();
+
+        return redirect()->route('admin.posts.index')->with('info', 'El post se elimino con exito');
     }
 }
+ 

@@ -17,7 +17,7 @@
     <div class="card-body">
         {!! Form::model($post, ['route' => ['admin.posts.update', $post], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
             
-        {!! Form::hidden('user_id', auth()->user()->id) !!}
+        {{-- {!! Form::hidden('user_id', auth()->user()->id) !!} --}}
             
             @include('admin.posts.partials.form')
 
