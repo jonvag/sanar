@@ -78,7 +78,7 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($tag)
+    public function edit($tag) 
     {
         $colors=[
             'red' => 'Rojo',

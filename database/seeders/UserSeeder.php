@@ -20,7 +20,14 @@ class UserSeeder extends Seeder
             'email' => 'jon.apiscope@gmail.com',
             'password' => bcrypt('12345678')
         ]);
-        User::factory(99)->create();
+
+        User::create([
+            'name' => 'Jensen Krovatovic',
+            'email' => '2jon.apiscope@gmail.com',
+            'password' => bcrypt('12345678')
+        ])->assignRole('Admin');
+        User::factory(8)->create();
 
     }
 }
+ 

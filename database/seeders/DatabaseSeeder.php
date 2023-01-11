@@ -29,6 +29,8 @@ class DatabaseSeeder extends Seeder
         Storage::deleteDirectory('posts'); //no me funciona
         Storage::makeDirectory('posts');//no me funciona
 
+        $this->call(RoleSeeder::class); 
+
         $this->call(UserSeeder::class);//no me funciona
         Category::factory(4)->create();//no me funciona
         Tag::factory(8)->create();//no me funciona
