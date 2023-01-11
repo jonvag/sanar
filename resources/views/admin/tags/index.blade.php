@@ -28,7 +28,7 @@
                         <th>Name</th>
                         <th colspan="2"></th>
                     </tr>
-                </thead>
+                </thead> 
                 <tbody>
                     @foreach ($tags as $tag)
                         <tr>

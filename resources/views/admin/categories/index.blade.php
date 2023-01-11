@@ -12,7 +12,7 @@
         </div>
     @endif
     <div class="{{-- container mx-auto --}}">
-        <div class="card">
+        <div class="card"> 
             <div class="card-header">
                 <a class="btn btn-secondary " href="{{route('admin.categories.create')}}"> Agregar categoria</a>
             </div>

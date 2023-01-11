@@ -317,20 +317,24 @@ return [
             'icon'        => 'fa fa-fw fa-tachometer-alt',
             'label'       => 4,
             'label_color' => 'success',
+            'can'         => 'admin.home', /* en este caso admin.home es el nombre del permiso, la directiva can verifica si esta permitido el usuario */
+
         ],
         [
             'text'        => 'Usuarios',
             'route'         => 'admin.users.index',
             'icon'        => 'fa fa-fw fa-users',
+            'can'         => 'admin.users.index', /* en este caso admin.users.index es el nombre del permiso, la directiva can verifica si esta permitido el usuario */
+
             /* 'label'       => 4, */
             /* 'label_color' => 'success', */
         ],
-        ['header' => 'ADMINISTRADOR'],
         [
-            'text' => 'Categorias',
+            'text'   => 'Categorias',
             'route'  => 'admin.categories.index',
-            'icon' => 'fab fa-fw fa-buffer',
+            'icon'   => 'fab fa-fw fa-buffer',
             'active' => ['admin/categories*'],
+            'can'    => 'admin.categories.index',
             
         ],
         [
@@ -338,6 +342,7 @@ return [
             'route'  => 'admin.tags.index',
             'icon' => 'far fa-fw fa-bookmark',
             'active' => ['admin/tags*'],
+            'can'         => 'admin.tags.index',
             
         ],
         [
@@ -389,12 +394,14 @@ return [
             'icon'       => 'fas fa-fw fa-clipboard',
             'icon_color' => 'red',
             'route'        => 'admin.posts.index',
+            'can'         => 'admin.posts.index',
         ],
         [
             'text'       => 'Crear post',
             'icon'       => 'fas fa-fw fa-file',
             'icon_color' => 'yellow',
             'route'        => 'admin.posts.create',
+            'can'         => 'admin.posts.create',
         ],
 
     ],

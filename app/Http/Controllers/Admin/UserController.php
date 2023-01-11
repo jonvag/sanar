@@ -28,7 +28,7 @@ class UserController extends Controller
     {
          $user->roles()->sync($request->roles);/* para escribir el la relacion polimorfica de la tabla roles y permisos, video 21 03 de como crear un blog auto administrable de victor arana flores, el metodo sync es para asignar un registro a esta relacion, lo explico en videso anteriores */
     
-         return redirect()->route('admin.users.edit', $user)->witd('info', 'se asigno los roles correctamente');
+         return redirect()->route('admin.users.edit', $user)->with('info', 'se asigno los roles correctamente'); 
     }
 
     
