@@ -2,6 +2,10 @@
 @section('title', 'Sanar')
 
 @section('content_header')
+    @can('admin.tags.creat')
+        <a class="btn btn-secondary float-right" href="{{route('admin.tags.create')}}"> Agregar etiqueta</a>
+    @endcan
+
     <h1>Mostrar listado de etiquetas</h1>
 @stop
 
@@ -17,9 +21,7 @@
 
        {{--  <x-alert /> --}}
        <div class="card">
-        <div class="card-header">
-            <a class="btn btn-secondary float-right" href="{{route('admin.tags.create')}}"> Agregar etiqueta</a>
-        </div>
+        
         <div class="card-body">
             <table class="table table-striped">
                 <thead>
@@ -34,13 +36,18 @@
                         <tr>
                             <td>{{$tag->id}}</td>
                             <td>{{$tag->name}}</td>
-                            <td width="10px" > <a class= "btn btn-primary btn-sm" href="{{route('admin.tags.edit', $tag->id)}}">editar</a></td>
+                            <td width="10px" > 
+                                @can('admin.tags.edit')
+                                    <a class= "btn btn-primary btn-sm" href="{{route('admin.tags.edit', $tag->id)}}">editar</a></td>
+                                @endcan
                             <td width="10px">
-                                <form action="{{route('admin.tags.destroy', $tag)}}" method="POST">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-danger btn-sm"> Eliminar</button>
-                                </form>
+                                @can('admin.tags.destroy')
+                                    <form action="{{route('admin.tags.destroy', $tag)}}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger btn-sm"> Eliminar</button>
+                                    </form>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

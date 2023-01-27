@@ -13,10 +13,10 @@
           <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
-        </button>
+        </button> 
       </div>
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-        <a  href= "/" class="flex flex-shrink-0 items-center">
+        <a  href= "{{route('posts.index')}}" class="flex flex-shrink-0 items-center">
           <img class="block h-8 w-auto lg:hidden" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
           <img class="hidden h-8 w-auto lg:block" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
         </a>
@@ -60,10 +60,10 @@
               <a href="{{route('profile.show')}}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Perfil</a>
 
               {{-- admin.home es el nombre del permiso al que queremos verificar --}}
-              @can('admin.home') {{-- csn es una directiva de blade, permite verificar si tenemos algun permiso --}}
+              @can('admin.home') {{-- can es una directiva de blade, permite verificar si tenemos algun permiso --}}
                 <a href="{{route('admin.home')}}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
                   
-              @endcan
+              @endcan 
 
               <form method="POST" action="{{ route('logout') }}" x-data>
                   @csrf 

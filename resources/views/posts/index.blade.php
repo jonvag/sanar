@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class=" max-w-7xl mx-auto px-2 sm:px-6 lg:px-8"> 
-        <div class=" py-8 bg-red-500">
+    <div class=" max-w-7xl mx-auto px-2 sm:px-6 lg:px-4"> 
+        <div class=" py-8 bg-gray-200">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"> 
                 @foreach ($posts as $post)
                     <article class=" w-full h-80   @if($loop->first) md:col-span-2 @endif" style="background-image: url(@if($post->image){{Storage::url($post->image->url)}} @else https://cdn.pixabay.com/photo/2022/11/29/14/16/sheep-7624635_960_720.jpg @endif )"> {{-- Esto es consultar la relacion entre posts e image --}}
