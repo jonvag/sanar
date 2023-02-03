@@ -1,4 +1,4 @@
-@props(['post']) {{-- esta es la manera de recibir la variable --}}
+@props(['post']) {{-- esta es la manera de recibir la variable --}} 
 <article class="mb-8 bg-white shadow-lg rounded-lg overflow-hidden">
     @if ($post->image)
     <img class="w-full h-72 object-cover object-center" src="{{Storage::url($post->image->url)}}" alt="">
@@ -16,9 +16,9 @@
         </div>
 
     </div>
-    <div class="px-6 pt-4 pb-2">
+    <div class="px-6 pt-4 pb-2 ">
         @foreach ($post->tags as $tag)
-                <a href="{{route('posts.tag', $tag)}}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm text-gray-700 mr-2">{{$tag->name}}</a>
+                <a href="{{route('posts.tag', $tag)}}" class="inline-block bg-gray-200 hover:bg-opacity-75 rounded-full px-3 py-1 text-sm text-gray-700 mr-2">{{$tag->name}}</a>
         @endforeach
 
     </div>
