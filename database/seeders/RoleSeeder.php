@@ -26,8 +26,8 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.users.index'])->syncRoles([$role1]); /* por convencion se coloca el nombre de la ruta pero en realidad se puede poner cualquier nombre */
         Permission::create(['name' => 'admin.users.edit'])->syncRoles([$role1]); /* por convencion se coloca el nombre de la ruta pero en realidad se puede poner cualquier nombre */
         Permission::create(['name' => 'admin.users.update'])->syncRoles([$role1]); /* por convencion se coloca el nombre de la ruta pero en realidad se puede poner cualquier nombre */
-        
-
+         
+ 
         Permission::create(['name' => 'admin.categories.index'])->syncRoles([$role1, $role2]); /* por convencion se coloca el nombre de la ruta pero en realidad se puede poner cualquier nombre */
         Permission::create(['name' => 'admin.categories.creat'])->syncRoles([$role1]); /* por convencion se coloca el nombre de la ruta pero en realidad se puede poner cualquier nombre */
         Permission::create(['name' => 'admin.categories.edit'])->syncRoles([$role1]); /* por convencion se coloca el nombre de la ruta pero en realidad se puede poner cualquier nombre */

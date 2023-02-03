@@ -1,7 +1,13 @@
 <x-app-layout>
+<<<<<<< HEAD
     <div class=" max-w-7xl mx-auto px-2 sm:px-6 lg:px-8"> 
         <div class=" py-8 {{-- bg-red-100 --}}">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-10"> 
+=======
+    <div class=" max-w-7xl mx-auto px-2 sm:px-6 lg:px-4"> 
+        <div class=" py-8 bg-gray-200">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"> 
+>>>>>>> 145926c3be58d3e270c54391cf9cab4fb8f3461c
                 @foreach ($posts as $post)
                 <div class="flex flex-col shadow-md hover:shadow-2xl  @if($loop->first) md:col-span-2 @endif">
                     <article class=" w-full h-80  bg-cover bg-center border-b-2 border-blue-600 borde-opacity-10 hover:border-opacity-25" style="background-image: url(@if($post->image){{Storage::url($post->image->url)}} @else https://cdn.pixabay.com/photo/2022/11/29/14/16/sheep-7624635_960_720.jpg @endif )"> {{-- Esto es consultar la relacion entre posts e image --}}

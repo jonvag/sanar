@@ -19,7 +19,7 @@ class UsersIndex extends Component
 
     public function render()
     {
-
+ 
         $users = User::where('name', 'LIKE', '%' . $this->search . '%')
                         ->orWhere('email', 'LIKE', '%' . $this->search . '%')
                         ->paginate(9); /* para poder usar pagination hay que importar use Livewire\WithPagination; y en la funcion usarla use WithPagination; */
