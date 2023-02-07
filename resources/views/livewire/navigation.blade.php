@@ -23,7 +23,10 @@
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            @can('admin.categories.creat')
             <a href="{{route('admin.home')}}" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a>
+                
+            @endcan
 
             @foreach ($categories as $category)
                 
@@ -60,7 +63,7 @@
               <a href="{{route('profile.show')}}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Perfil</a>
 
               {{-- admin.home es el nombre del permiso al que queremos verificar --}}
-              @can('admin.home') {{-- can es una directiva de blade, permite verificar si tenemos algun permiso --}}
+              @can('admin.categories.creat') {{-- can es una directiva de blade, permite verificar si tenemos algun permiso --}}
                 <a href="{{route('admin.home')}}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
                   
               @endcan 
@@ -90,7 +93,9 @@
   <div class="sm:hidden" id="mobile-menu" x-show="open" x-on:click.away=" open = false">
     <div class="space-y-1 px-2 pt-2 pb-3">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+      @can('admin.categories.creat')
       <a href="{{route('admin.home')}}" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a>
+      @endcan
       @foreach ($categories as $category)
       <a href="{{route('posts.category', $category) }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">{{$category->name}}</a>
     @endforeach
