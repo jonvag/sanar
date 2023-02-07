@@ -1,9 +1,8 @@
 @extends('adminlte::page')
 @section('title', 'Sanar')
-@section('plugins.Sweetalert2', true)
 
 @section('content_header')
-    <h1>Inicio</h1>
+    <h1>Mostrar rol</h1>
 @stop
 
 @section('content')
@@ -19,13 +18,5 @@
 @stop
 
 @section('js')
-<script>
-    Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Bienvenido {{$id_user}}' ,
-        showConfirmButton: false,
-        timer: 2000
-      })
-    </script>
+    <script> console.log('Hi!'); </script>
 @stop

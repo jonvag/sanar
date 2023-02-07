@@ -1,13 +1,7 @@
 <x-app-layout>
-<<<<<<< HEAD
     <div class=" max-w-7xl mx-auto px-2 sm:px-6 lg:px-8"> 
         <div class=" py-8 {{-- bg-red-100 --}}">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-10"> 
-=======
-    <div class=" max-w-7xl mx-auto px-2 sm:px-6 lg:px-4"> 
-        <div class=" py-8 bg-gray-200">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"> 
->>>>>>> 145926c3be58d3e270c54391cf9cab4fb8f3461c
                 @foreach ($posts as $post)
                 <div class="flex flex-col shadow-md hover:shadow-2xl  @if($loop->first) md:col-span-2 @endif">
                     <article class=" w-full h-80  bg-cover bg-center border-b-2 border-blue-600 borde-opacity-10 hover:border-opacity-25" style="background-image: url(@if($post->image){{Storage::url($post->image->url)}} @else https://cdn.pixabay.com/photo/2022/11/29/14/16/sheep-7624635_960_720.jpg @endif )"> {{-- Esto es consultar la relacion entre posts e image --}}
@@ -32,6 +26,11 @@
                             </h1>
                             <h1 class="px-4 pb-2 text-base text-gray-700 leading-4">
                                 {!!$post->extract!!}
+                                {{-- @if($post->image)
+                                {{$post->image}}
+                                <br>
+                                {{Storage::url($post->image->url)}}
+                                @endif --}}
                             </h1>
                         </div>
                     </a>
@@ -39,9 +38,14 @@
                 @endforeach
             </div>
         </div>
-        <div class="mt-4">
-            {{$posts->links()}}
-        </div>
         
+        <footer class="p-4 bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-800">
+                <div class="mt-4">
+                    {{$posts->links()}}
+                </div>
+            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://jonapiscope.com" target="_blank" class="hover:underline">Creado por JonVAG™</a>. All Rights Reserved.
+            </span>
+        </footer>
     </div>
 </x-app-layout>

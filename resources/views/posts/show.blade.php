@@ -19,7 +19,14 @@
                     @endif
                 </figure>
                 <div class="container w-full pb-2 px-0 text-base text-left text-gray-500 mt-4">
-                    {!!$post->body!!}
+                    {{-- {!!$post->body!!} --}}
+
+                    @if ($post->image)
+                    {{-- {{$post}} --}}
+                    <br>
+                    {{Storage::url($post->image->url)}}
+        
+                    @endif
                 </div>
 
             </div>

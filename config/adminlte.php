@@ -330,6 +330,15 @@ return [
             /* 'label_color' => 'success', */
         ],
         [
+            'text'        => 'Lista de Roles',
+            'route'         => 'admin.roles.index',
+            'icon'        => 'fas fa-fw fa-users-cog',
+            /* 'can'         => 'admin.users.index',  *//* en este caso admin.users.index es el nombre del permiso, la directiva can verifica si esta permitido el usuario */
+
+            /* 'label'       => 4, */
+            /* 'label_color' => 'success', */
+        ],
+        [
             'text'   => 'Categorias',
             'route'  => 'admin.categories.index',
             'icon'   => 'fab fa-fw fa-buffer',

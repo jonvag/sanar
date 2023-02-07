@@ -3,7 +3,6 @@
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
-
 /* para que tome las rutas se ejecuta el comando php artisan optimize */
 /* para que agarre cambios de taildwin se ejecuta npm run build  */
 Route::get('/', [PostController::class, 'index'])->name('posts.index');
@@ -13,6 +12,7 @@ Route::get('/', [PostController::class, 'index'])->name('posts.index');
 Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
 Route::get('category/{category}', [PostController::class, 'category'])->name('posts.category');
 Route::get('tag/{tag}', [PostController::class, 'tag'])->name('posts.tag');
+Route::get('refrescar', [PostController::class, 'refrescar'])->name('posts.refrescar');
 
 
 

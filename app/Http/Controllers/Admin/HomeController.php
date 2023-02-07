@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index() {
-        return view('admin.index');
+
+        /* $id_user =auth()->user()->id; */
+        $id_user =auth()->user()->name;
+
+        return view('admin.index', compact('id_user'));
     }
 }

@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('adminlte::page') 
 @section('title', 'Sanar')
 
 @section('content_header')
@@ -13,7 +13,7 @@
             <strong>{{session('info')}}</strong>
         </div>
             
-        @endif
+        @endif 
         <div class="card">
             <div class="card-body">
                 {{-- form model es para recuperar la informacion del formulario (rellenar los inputs con lo que ya hay en la BD) --}}

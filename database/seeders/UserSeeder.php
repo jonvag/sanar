@@ -19,13 +19,13 @@ class UserSeeder extends Seeder
             'name' => 'Jon Apiscope',
             'email' => 'jon.apiscope@gmail.com',
             'password' => bcrypt('12345678')
-        ]);
+        ])->assignRole('Admin');
 
         User::create([
             'name' => 'Jensen Krovatovic',
             'email' => '2jon.apiscope@gmail.com',
             'password' => bcrypt('12345678')
-        ])->assignRole('Admin');
+        ])->assignRole('Blogger');
         User::factory(8)->create();
 
     }

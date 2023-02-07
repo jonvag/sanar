@@ -7,7 +7,7 @@
 
 @section('content')
     <div class="container mx-auto">
-<div class="card">
+<div class="card"> 
     <div class="card-body">
         {!! Form::open(['route' => 'admin.posts.store', 'autocomplete' => 'off', 'files' => true])!!}
 
