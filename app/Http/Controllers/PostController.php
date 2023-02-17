@@ -11,30 +11,58 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Cache; 
+
 
 class PostController extends Controller 
 {
     public function index(){
-        /* $posts =  DB::table('posts')
-        ->join('images', 'posts.id', '=', 'images.imageable_id')
-        ->select('posts.id', 'posts.name', 'posts.slug', 'posts.extract', 'posts.body', 'posts.status', 'posts.user_id', 'posts.category_id', 'images.url')
-        ->where('posts.status', '=', 2)
-        ->orderByDesc('pagos.created_at')
-        ->simplePaginate(8) ;
-        ->get(); */
-        if(Auth::check()){
-
-            $id_user =auth()->user()->id;
-            $posts = Post::where('status', 2)->where('user_id', $id_user )->latest('id')->paginate(8);
-        }else{
-            $posts = Post::where('status', 2)->latest('id')->paginate(8);
+        
+        if (request()->page) { /* aqui se usa el cache dependiendo del numero de pagina en que este */
+            $key = 'posts' . request()->page;
+        }else {
+            $key= 'posts';
         }
-         
-        $categories = Category::get()->take(3);
+
+        if (Cache::has($key)) {  /* si hay cache, muestra lo que ya se tiene en el cache */
+            $posts = Cache::get($key);
+        }else {  /* si no hay cache, hacemos la consulta a la BD y guardamos en cache */
+        
+            if(Auth::check()){  /* si esta loggeado se muestran solo sus posts */
+
+                $id_user =auth()->user()->id;
+                $posts = Post::where('status', 2)->where('user_id', $id_user )->latest('id')->paginate(8);
+            }else{  /* si no es que no es un usuario entonces se muestran todos los posts */
+                $posts = Post::where('status', 2)->latest('id')->paginate(8);
+                Cache::put($key, $posts);  /* guardamos en cache, $key es el nombre de la consulta, y $posts el resultado de la consulta */
+            }
+        }
+
+        
+          
+        /* $categories = Category::get()->take(3); */
         $tags = Tag::get()->take(3);
 
 /* return $tags; */
-        return view('posts.index', compact('posts', 'categories', 'tags')); 
+        return view('posts.index', compact('posts'/* , 'categories' */, 'tags')); 
+    }
+
+    public function index2 (){
+
+
+        return redirect()->route('posts.index'); 
+    }
+    public function index3 (){
+
+
+        return 'estoy en el cotrolador'; 
+    }
+
+    public function refrescar (){
+
+        Cache::flush(); /* este elimina toda la cache */
+
+        return redirect()->route('posts.index'); 
     }
 
     public function show (Post $post){
@@ -47,7 +75,6 @@ class PostController extends Controller
                                 ->latest('id')
                                 ->take(4)
                                 ->get(); 
-
         return view('posts.show', compact('post', 'similares'));
     }
 

@@ -4,14 +4,14 @@
 @section('content_header')
     <h1>Editar categorias</h1>
 @stop
-
+ 
 @section('content')
 @if (session('info')) {{-- esta variable viene de el controlador edit, se manda  con    return redirect()->route('admin.categories.edit', $category)->with('info', 'actualizado con exito'); --}}
 <div class="alert alert-success">
     <strong>{{session('info')}}</strong>
 </div>
     
-@endif
+@endif 
 <div class="card">
     <div class="card-body">
         {{-- form model es para recuperar la informacion del formulario (rellenar los inputs con lo que ya hay en la BD) --}}

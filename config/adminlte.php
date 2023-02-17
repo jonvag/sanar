@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => '/',
+    'dashboard_url' => '/inicio',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -325,6 +325,15 @@ return [
             'route'         => 'admin.users.index',
             'icon'        => 'fa fa-fw fa-users',
             'can'         => 'admin.users.index', /* en este caso admin.users.index es el nombre del permiso, la directiva can verifica si esta permitido el usuario */
+
+            /* 'label'       => 4, */
+            /* 'label_color' => 'success', */
+        ],
+        [
+            'text'        => 'Lista de Roles',
+            'route'         => 'admin.roles.index',
+            'icon'        => 'fas fa-fw fa-users-cog',
+            /* 'can'         => 'admin.users.index',  *//* en este caso admin.users.index es el nombre del permiso, la directiva can verifica si esta permitido el usuario */
 
             /* 'label'       => 4, */
             /* 'label_color' => 'success', */

@@ -23,16 +23,35 @@
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            @can('admin.categories.creat')
-            <a href="{{route('admin.home')}}" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a>
-                
+            @can('admin.home')
+            <a href="{{route('admin.home')}}" {{-- class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page" --}}>
+              <button
+              type="button"
+              class="border border-gray-700 bg-gray-700 text-white rounded-md px-4 py-1 {{-- m-2 --}} transition duration-500 ease select-none hover:bg-gray-800 focus:outline-none focus:shadow-outline"
+            >
+            Dashboard
+            </button></a>
             @endcan
 
             @foreach ($categories as $category)
                 
-              <a href="{{route('posts.category', $category) }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">{{$category->name}}</a>
-            @endforeach
-
+              <a href="{{route('posts.category', $category) }}" {{-- class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" --}}>
+              <button
+              type="button"
+              class="border border-gray-600 bg-gray-600 text-white rounded-md px-4 py-1 {{-- m-2 --}} transition duration-500 ease select-none hover:bg-gray-800 focus:outline-none focus:shadow-outline"
+            >
+            {{$category->name}}
+              </button>
+            </a>
+              @endforeach
+              <a  href="{{route('posts.refrescar')}}">
+              <button
+              type="button"
+              class="border border-gray-700 bg-gray-700 text-white rounded-md px-4 py-1 {{-- m-2 --}} transition duration-500 ease select-none hover:bg-gray-800 focus:outline-none focus:shadow-outline"
+            >
+            Refresh
+            </button>
+            </a>
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@
                             <th>Name</th>
                             <th colspan="2"></th>
                         </tr>
-                    </thead>
+                    </thead> 
                     <tbody>
                         @foreach ($categories as $category)
                             <tr>

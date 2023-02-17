@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PostRequest;/* esto se hizo en el video como crear un nuevo post de como crear un blog autoadministrable, victor arana flores */
 class PostController extends Controller
@@ -18,6 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        
         return view('admin.posts.index');
     }
 
@@ -52,6 +54,9 @@ class PostController extends Controller
                 'url' => $url 
             ]);
         }
+
+        /* Cache::forget('key'); *//* eliminar la cache. se le pasa el nombre de la cache */
+        Cache::flush(); /* este elimina toda la cache */
 
         if ($request->tags) {
             $post->tags()->attach($request->tags);
@@ -121,6 +126,7 @@ class PostController extends Controller
         if ($request->tags) {
             $post->tags()->sync($request->tags); /* eno se usa el metodo attach ya que siempre se creara uno mas, con sync el verifica si ya existe y lo actualiza */
         }
+        Cache::flush(); /* este elimina toda la cache */
         return redirect()->route('admin.posts.edit', $post)->with('info', 'El post se actualizo con exito');
     }
 
@@ -135,6 +141,7 @@ class PostController extends Controller
         $this->authorize('author', $post);/* esto es para que o se editen post de otros usuarios ya sea porque pongo el id en la url. esto se obtiene a traves de un policy sacado del video de como crear un blog autoadministrable de victor arana flores video 18 en policies */
 
         $post->delete();
+        Cache::flush(); /* este elimina toda la cache */
 
         return redirect()->route('admin.posts.index')->with('info', 'El post se elimino con exito');
     }
